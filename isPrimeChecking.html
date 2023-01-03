@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            max-width: 100%;
+            max-height: 100%;
+        }
+        .container {
+            padding-top: 200px;
+            text-align: center;
+            font-size: 3em;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .button {
+            width: 3em;
+            font-size: 0.7em;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .input {
+            margin-top: 15px;
+            font-size: 1em;
+            margin-bottom: 10px;
+            width: 350px;
+        }
+        .label {
+            font-size: 0.5em;
+        }
+        #result {
+            padding-top: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+    <form class="form" action="#" method="post">
+        <label for="number" class="label">Enter the number you want to check:</label><br>
+        <input class='input' type="text" id="num" name="number" value="1"><br>
+        <button class="button" type="button">Check</button>
+    </form>
+        <div id="result">Result will be here</div>
+    </div>
+    <script>
+    const button = document.querySelector('.button');
+    button.onclick = buttonClick
+function buttonClick() {
+    let number = Number(document.getElementById("num").value);
+    if (number === 1 || number === 2) {
+        document.getElementById("result").textContent = (`Yes, ${number} is prime`);
+        return
+    } else if (number === 0) {
+        document.getElementById("result").textContent = `No, ${number} is not prime`;
+        return
+    }
+    for (let i = 2; i < number; i++) {
+        if (number % i === 0) {
+            document.getElementById("result").textContent = `No, ${number} is not prime`;
+            return
+        }
+    }
+    document.getElementById("result").textContent = `Yes, ${number} is prime`;
+    return
+}
+    </script>
+</body>
+</html>
